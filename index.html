@@ -5,39 +5,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bloxport Project Editor</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="./style.css" type="text/css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/srubin/jquery-ui-draggable-snap2/master/jquery.ui.draggable.snap2.js"></script>
     <script>
-    function makeDraggable(input){
-        $(function() {
-            $(input).draggable({
-                snap2: ".snapTo",
-                snap2Mode: "outer",
-                snap2Tolerance: 20,
-                snap2Sides: "b"
+        function makeDraggable() {
+            $(function() {
+                $(".block").draggable({
+                    snap2: ".snapTo",
+                    snap2Mode: "outer",
+                    snap2Tolerance: 20,
+                    snap2Sides: "b"
+                });
+                $(".mainBlock").draggable({
+                    stop: function(event, ui) {
+                        jQuery('<div/>', {'class': 'block snapTo ui-widget-content',style:'position: absolute;top:'+$(this).offset().top+'px;left:'+$(this).offset().left+'px;'}).appendTo('body');makeDraggable()
+                        $(this).css({left:0,top:0});
+
+                    }
+                });
             });
-        });
-    }
-        makeDraggable(".block")
+        }
+        makeDraggable()
+
     </script>
 </head>
 
 <body>
-    <h1>They only snap on the bottom`</h1>
+
     <br style="clear:both">
 
-    <div class="block snapTo ui-widget-content">
-        
-    </div>
+    <div class="block snapTo ui-widget-content mainBlock"></div>
 
-    <div class="snapTo ui-widget-content">
-        <p>Snap the blocks to me!</p>
+    <div class="snapTo ui-widget-content start">
+        Connect things to me!
     </div>
-
-    <button onclick="jQuery('<div/>', {'class': 'block snapTo ui-widget-content',}).appendTo('body');makeDraggable('.block')"> Add New Block</button>
 
 
 
