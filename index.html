@@ -1,7 +1,46 @@
-<!DOCTYPE html>
-<html>
-  <head>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bloxport Project Editor</title>
-    <link href="/Bloxport_Editor/style.css" type="text/css" rel="stylesheet">
-  </head>
-  <body>
+    <link href="./style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.rawgit.com/srubin/jquery-ui-draggable-snap2/master/jquery.ui.draggable.snap2.js"></script>
+    <script>
+    function makeDraggable(input){
+        $(function() {
+            $(input).draggable({
+                snap2: ".snapTo",
+                snap2Mode: "outer",
+                snap2Tolerance: 5,
+                snap2Sides: "b"
+            });
+        });
+    }
+        makeDraggable(".block")
+    </script>
+</head>
+
+<body>
+
+    <br style="clear:both">
+
+    <div class="block snapTo ui-widget-content">
+        
+    </div>
+
+    <div class="snapTo ui-widget-content">
+        <p>Snap the blocks to me!</p>
+    </div>
+
+    <button onclick="jQuery('<div/>', {'class': 'block snapTo ui-widget-content',}).appendTo('body');makeDraggable('.block')"> Add New Block</button>
+
+
+
+</body>
+
+</html>
