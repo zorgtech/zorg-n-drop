@@ -1,5 +1,5 @@
 # Bloxport (Editor)
->Bloxport is a new drag-and-drop language that is similar to Scratch.
+>Bloxport is a new drag-and-drop language that is similar to Scratch. The aim of Bloxport is to create an easy to use drag and drop language, with an easy to use interface, which can export your projects into various formats (such as a desktop app, HTML5, etc.).
 
 ##Forum
 >The forum can be found here https://scratch.mit.edu/discuss/topic/232116/
