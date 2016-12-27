@@ -5,7 +5,7 @@
 >The forum can be found here https://scratch.mit.edu/discuss/topic/232116/
 
 ##License
->MIT?
+>MIT
 
 ## Contributing
 >1. Fork it!
