@@ -49,11 +49,14 @@ function handle_mousedown(e) {
                 if (canSnap(my_dragging.elem, this)==true){
                     var newCords=$(this).position();
                     console.log($(this).position().top,$(my_dragging.elem).position().top);
-                    if ($(this).position().top>$(my_dragging.elem).position().top){
+                    if ($(this).position().top>$(my_dragging.elem).position().top && !$(this).hasClass("start")){
                         newCords.top-=$(this).height();
-                    } else {
+                    } else if ($(this).position().top<$(my_dragging.elem).position().top) {
                         newCords.top+=$(this).height();
+                    } else {
+                        newCords=$(my_dragging.elem).position();
                     }
+                        
                     $(my_dragging.elem).css({top: newCords.top, left: newCords.left});
                 }
             }
