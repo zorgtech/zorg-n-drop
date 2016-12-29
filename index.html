@@ -1,51 +1,83 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <link rel="shortcut icon" href="bloxportfavicon.ico">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bloxport Project Editor</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="./style.css" type="text/css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script src="https://cdn.rawgit.com/srubin/jquery-ui-draggable-snap2/master/jquery.ui.draggable.snap2.js"></script>
-    <script>
-        function makeDraggable() {
-            $(function() {
-                $(".block").draggable({
-                    snap2: ".snapTo",
-                    snap2Mode: "outer",
-                    snap2Tolerance: 20,
-                    snap2Sides: "b"
-                });
-                $(".mainBlock").draggable({
-                    stop: function(event, ui) {
-                        jQuery('<div/>', {'class': 'block snapTo ui-widget-content',style:'position: absolute;top:'+$(this).offset().top+'px;left:'+$(this).offset().left+'px;'}).appendTo('body');makeDraggable()
-                        $(this).css({left:0,top:0});
-
-                    }
-                });
-            });
-        }
-        makeDraggable()
-
-    </script>
-</head>
-
-<body>
-
-    <br style="clear:both">
-
-    <div class="block snapTo ui-widget-content mainBlock"></div>
-
-    <div class="snapTo ui-widget-content start">
-        Connect things to me!
-    </div>
-
-
-
-</body>
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="googlebot" content="noindex, nofollow">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<style type="text/css">
+			.rect {
+			width: 120px;
+			height: 40px;
+			background-color: blue;
+			color: white;
+			/* Internet Explorer 10 */
+			display: -ms-flexbox;
+			-ms-flex-pack: center;
+			-ms-flex-align: center;
+			/* Firefox */
+			display: -moz-box;
+			-moz-box-pack: center;
+			-moz-box-align: center;
+			/* Safari, Opera, and Chrome */
+			display: -webkit-box;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+			/* W3C */
+			display: box;
+			box-pack: center;
+			box-align: center;
+			}
+			.rect > input {
+			width: 40px;
+			padding: auto;
+			}
+		</style>
+		<title>BloxPort</title>
+		<script type='text/javascript'>//<![CDATA[
+			window.onload=function(){
+			function handle_mousedown(e) {
+			  window.my_dragging = {};
+			  my_dragging.pageX0 = e.pageX;
+			  my_dragging.pageY0 = e.pageY;
+			  my_dragging.elem = this;
+			  my_dragging.offset0 = $(this).offset();
+			
+			  function handle_dragging(e) {
+			    var left = my_dragging.offset0.left + (e.pageX - my_dragging.pageX0);
+			    var top = my_dragging.offset0.top + (e.pageY - my_dragging.pageY0);
+			    $(my_dragging.elem)
+			      .offset({
+			        top: top,
+			        left: left
+			      });
+			  }
+			
+			  function handle_mouseup(e) {
+			    $('body')
+			      .off('mousemove', handle_dragging)
+			      .off('mouseup', handle_mouseup);
+			
+			
+			  }
+			  $('body')
+			    .on('mouseup', handle_mouseup)
+			    .on('mousemove', handle_dragging);
+			}
+			
+			
+			
+			$('.draggables').mousedown(handle_mousedown);
+			
+			}//]]> 
+			
+		</script>
+	</head>
+	<body>
+		<div class="draggables rect" id="1">
+			Input:
+			<input type="text">
+		</div>
+		<div class="draggables rect" id="2"></div>
+	</body>
 </html>
