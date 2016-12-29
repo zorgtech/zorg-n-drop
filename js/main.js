@@ -28,7 +28,12 @@ function handle_mousedown(e) {
             if (this != my_dragging.elem && typeof this == "object") {
                 if (canSnap(my_dragging.elem, this)==true){
                     var newCords=$(this).position();
-                    newCords.top+=$(this).height();
+                    console.log($(this).position().top,$(my_dragging.elem).position().top);
+                    if ($(this).position().top>$(my_dragging.elem).position().top){
+                        newCords.top-=$(this).height();
+                    } else {
+                        newCords.top+=$(this).height();
+                    }
                     $(my_dragging.elem).css({top: newCords.top, left: newCords.left});
                 }
             }
