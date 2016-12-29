@@ -27,4 +27,12 @@ function handle_mousedown(e) {
         .on('mousemove', handle_dragging);
 }
 
+function initialize(element){
+    element.snapInfo={snapped:false};
+}
+
 $('.draggables').mousedown(handle_mousedown);
+
+for (var i = 0; i < $('.draggables').length; i++) {
+    initialize($('.draggables')[i]);
+}
