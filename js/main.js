@@ -1,6 +1,26 @@
 var snapRange = 60;
 var currentId = 3;
 
+(function($) {
+    $.fn.textfill = function(maxFontSize) {
+        maxFontSize = parseInt(maxFontSize, 10);
+        return this.each(function(){
+            var ourText = $("span", this),
+                parent = ourText.parent(),
+                maxHeight = parent.height(),
+                maxWidth = parent.width(),
+                fontSize = parseInt(ourText.css("fontSize"), 10),
+                multiplier = maxWidth/ourText.width(),
+                newSize = (fontSize*(multiplier-0.1));
+            ourText.css(
+                "fontSize", 
+                (maxFontSize > 0 && newSize > maxFontSize) ? 
+                    maxFontSize : 
+                    newSize
+            );
+        });
+    };
+})(jQuery);
 
 function handle_mousedown(e) {
     window.my_dragging = {};
@@ -75,6 +95,8 @@ function initialize(element) {
 }
 
 $('.draggables').mousedown(handle_mousedown);
+
+$(".draggables").textfill();
 
 for (var i = 0; i < $('.draggables').length; i++) {
     initialize($('.draggables')[i]);
