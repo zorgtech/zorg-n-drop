@@ -20,6 +20,9 @@
             display: box;
             box-pack: center;
             box-align: center;
+            position: absolute;
+            border-color:black;
+            border-style: solid;
         }
         
         .rect > input {
