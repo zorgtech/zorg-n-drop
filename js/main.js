@@ -27,6 +27,7 @@ function handle_mousedown(e) {
     my_dragging.pageX0 = e.pageX;
     my_dragging.pageY0 = e.pageY;
     my_dragging.elem = this;
+    $(my_dragging.elem).css('z-index', 2);
     my_dragging.offset0 = $(this).offset();
 
     function handle_dragging(e) {
@@ -43,7 +44,7 @@ function handle_mousedown(e) {
         $('body')
             .off('mousemove', handle_dragging)
             .off('mouseup', handle_mouseup);
-
+        $(my_dragging.elem).css('z-index', 1);
         $(".snapable").each(function (index) {
             if (this != my_dragging.elem && typeof this == "object") {
                 if (canSnap(my_dragging.elem, this)==true){
@@ -100,6 +101,8 @@ function initialize(element) {
 $('.draggables').mousedown(handle_mousedown);
 
 $(".draggables").textfill();
+
+$(".draggables").css('z-index', 1);
 
 for (var i = 0; i < $('.draggables').length; i++) {
     initialize($('.draggables')[i]);
