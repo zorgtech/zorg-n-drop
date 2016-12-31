@@ -1,35 +1,34 @@
-        .rect {
-            width: 120px;
-            height: 40px;
-            background-color: blue;
-            color: white;
-            margin: 10px;
-            /* Internet Explorer 10 */
-            display: -ms-flexbox;
-            -ms-flex-pack: center;
-            -ms-flex-align: center;
-            /* Firefox */
-            display: -moz-box;
-            -moz-box-pack: center;
-            -moz-box-align: center;
-            /* Safari, Opera, and Chrome */
-            display: -webkit-box;
-            -webkit-box-pack: center;
-            -webkit-box-align: center;
-            /* W3C */
-            display: box;
-            box-pack: center;
-            box-align: center;
-            position: absolute;
-            border-color:black;
-            border-style: solid;
-        }
-        
-        .rect > input {
-            width: 40px;
-            padding: auto;
-        }
+.rect {
+    width: 120px;
+    height: 40px;
+    background-color: #722FFF;
+    color: white;
+    margin: 10px;
+    /* Internet Explorer 10 */
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    /* Safari, Opera, and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+    position: absolute;
+    bborder: none;
+}
+
+.rect > input {
+    width: 40px;
+    padding: auto;
+}
 
 .start {
-    background-color: green;
+    background-color: #722FFF;
 }
