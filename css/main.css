@@ -21,7 +21,7 @@
     box-pack: center;
     box-align: center;
     position: absolute;
-    bborder: none;
+    border: none;
 }
 
 .rect > input {
