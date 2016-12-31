@@ -1,7 +1,7 @@
 .rect {
     width: 120px;
     height: 40px;
-    background-color: #722FFF;
+    background-color: #114BFF;
     color: white;
     margin: 10px;
     /* Internet Explorer 10 */
@@ -30,5 +30,5 @@
 }
 
 .start {
-    background-color: #722FFF;
+    background-color: #114BFF;
 }
